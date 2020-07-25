@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<form method="POST" action="">
+  {{ form.hidden_tag() }}
+  <div class="container p-5">
+    <div class="card shadow mb-5 bg-white rounded mx-auto" style="width: 700px;">
+      <div class="card-body">
+        <h5 class="card-title text-center">Add Event</h5>
+        <div class="form-group">
+          {{form.eventname(class="form-control form-control-md text-muted", placeholder="Event")}}
+        </div>    
+    <div class="form-group">
+      {{form.eventlocation(class="form-control form-control-md text-muted", placeholder="Location")}}
+    </div>
+
+    <div class="form-group">
+      {{form.eventdate(class="form-control form-control-md text-muted", id="picker", placeholder="Date")}}
+      </div>
+    <div class="form-group">
+      {{form.description(class="form-control", rows="5", placeholder="Description" )}}
+    </div>  
+      <div class="text-right">    
+        {{form.submit(class="btn btn-success")}}
+      </div>
+    </div> 
+    </div>
+  </div> 
+</form>
+    <hr>
+
+  <form class="container">
+    <div class="container"><h4>Events Near you</h4></div>
+    {% for event in eventshow.items %}
+      <div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" src="{{ eventpic }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{event.eventname}}</h5>
+            <p class="card-text">{{event.eventlocation}}</p>
+            <p class="card-text"><small class="text-muted">{{event.eventdate}}</small></p>
+          </div>
+        </div>
+      </div>
+    </form>
+    {% endfor %}
+{% endblock content %}   
+

@@ -1,0 +1,176 @@
+{% extends "layout.html" %}
+{% block content %}
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<style type="text/css">
+    .overlay {
+        position: relative;
+        width: 100;
+        max-width: 400px;
+      }
+      
+      .overlay img {
+        width: 80%;
+        height: auto;
+      }
+    
+      .overlay .fa_custom {
+        color: rgb(45, 53, 45)
+        }
+    
+        
+      .overlay .btn {
+        position: absolute;
+        bottom: -19%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+      }
+      
+      .overlay .btn:hover {
+        background-color: none;
+      }
+
+
+.input {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  left: 0;
+  bottom:  0 ;
+} 
+     
+</style>
+</head>
+
+
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="container">
+        <div method="POST" action="">
+            <span class="float-left">
+                <div class="register-form p-5" style="width: 44rem">
+                    <div class="shadow-lg p-3 mb-9 bg-white rounded col-sm-5 col-md-7 col-lg-12 mx-auto">
+                        <div class="text-center">
+                            <p><h5>My Profile</h5></p>
+                        </div>
+                        <div class="col mt-4">
+                            <p class="text-muted">User Information</p>
+                        </div>   
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col mt-4">
+                                    {% if form.username.errors %}
+                                        {{ form.username(class="form-control form-control-md is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.username.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.username(class="form-control form-control-md text-muted", placeholder="Username") }}
+                                    {% endif %}
+                                </div>
+                                <div class="col mt-4">
+                                    {% if form.email.errors %}
+                                        {{ form.email(class="form-control form-control-md text-muted is-invalid") }}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.email.errors %}
+                                                <span>{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        {{ form.email(class="form-control form-control-md text-muted", placeholder="Email") }}
+                                    {% endif %}
+                                </div>
+                            </div>      
+                        </div>
+                        <div class="form-group">      
+                            <div class="row">
+                                <div class="col mt-4">
+                                    {{ form.firstname(class="form-control form-control-md text-muted", placeholder="First Name") }}
+                                </div>
+                                <div class="col mt-4">
+                                    {{ form.lastname(class="form-control form-control-md text-muted", placeholder="Last Name") }}
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col mt-4">
+                                    {{ form.designation(class="form-control form-control-md text-muted", placeholder="Designation") }}
+                                </div>
+                            </div>
+                        </div> 
+                
+                        <div class="col mt-4">
+                            <p class="text-muted">Contact Info</p>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col mt-4">
+                                    {{ form.address(class="form-control form-control-md text-muted", placeholder="Address") }}
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col mt-4">
+                                    {{ form.pincode(class="form-control form-control-md text-muted", placeholder="Pincode") }}
+                                </div>
+                                <div class="col mt-4">
+                                    {{ form.contactno(class="form-control form-control-md text-muted", placeholder="Mobile Number") }}
+                                </div>
+                            </div>
+                        </div>  
+        
+                        <div class="col mt-4">
+                            <p class="text-muted">About Me</p>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col mt-4">
+                                    {{ form.aboutme(class="form-control form-control-md text-muted", placeholder="About me") }}
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="text-right col mt-4">
+                            <button type="button" class="btn btn-success">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </span>  
+        </div>
+      </div>
+
+
+
+<div class="conatiner">
+<div class="card-deck p-5" style="width: 24rem;"> 
+   <div class="card bg-white">
+<div class="overlay">
+    <img src="{{ userimage }}"  class="rounded-circle mx-auto d-block">
+    <button class=" btn file fa fa-camera fa_custom fa-2x">
+    <input type="file" class="input" name="file"/>
+</button>
+</div>
+      <div class="card-body text-center">
+        <p class="card-title"><b>{{ current_user.username }}</b></p>
+        <p class="card-text">Assasiantion</p>
+        <P class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+             Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+        </P>
+      </div>
+    </div>
+    
+</div>   
+</div>
+
+
+{% endblock content %}   

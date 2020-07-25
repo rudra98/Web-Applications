@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% for user in users %}
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+            <div class="media">
+                <img class="rounded-circle account-img" src="{{ userimage }}">
+                    <div class="media-body">
+                        <h2 class="account-heading">{{ current_user.username }}</h2>
+                        <p class="text-secondary">{{ current_user.email }}</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock content %}  

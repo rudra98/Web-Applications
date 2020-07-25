@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block content %}
+  <body>
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <div class="container p-5">
+      <div class="row justify-content-center">
+        <div class="shadow-lg p-3 mb-9 bg-white rounded col-sm-5 col-md-7 col-lg-5 mx-auto">
+
+          <div class="row">
+            <div class="col text-center">
+              <h5>SignUp</h5>
+            </div>
+          </div>
+
+          <div class="card card-signup my-3">
+            <div class="card-body">
+
+              <div class="row align-items-center">
+                <div class="col mt-4">
+                  {% if form.username.errors %}
+                      {{ form.username(class="form-control form-control-md is-invalid") }}
+                      <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                          <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                  {% else %}
+                    {{ form.username(class="form-control form-control-md text-muted", placeholder="Username") }}
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                 {% if form.email.errors %}
+                      {{ form.email(class="form-control form-control-md text-muted is-invalid") }}
+                      <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                          <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                  {% else %}
+                    {{ form.email(class="form-control form-control-md text-muted", placeholder="Email") }}
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="row align-items-center mt-4">
+                <div class="col">
+                   {% if form.password.errors %}
+                      {{ form.password(class="form-control form-control-md is-invalid") }}
+                      <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                          <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                  {% else %}
+                    {{ form.password(class="form-control form-control-md text-muted", placeholder="Password") }}
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="row align-item-center mt-4">
+                <div class="col">
+                  {% if form.confirm_password.errors %}
+                      {{ form.confirm_password(class="form-control form-control-md is-invalid") }}
+                      <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                          <span>{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.confirm_password(class="form-control form-control-md text-muted", placeholder="Confirm Password") }}
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="row justify-content-start mt-4">
+                <div class="col">
+                  <div class="form-check">
+                    
+                      <div class="custom-control custom-checkbox mb-3">
+                        {{ form.terms(class="form-check-input") }}
+                        {{ form.terms.label(class="form-check-label") }} <a href="https://help.instagram.com/581066165581870">Terms and Conditions</a>
+                      </div>
+                    
+                  </div>
+                  <label></label>
+                  <div class="text-center">    
+                    {{ form.submit(class="btn btn-success") }}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="border-top pt-3">
+            <small class="text-muted">
+              <div class="text-center"> Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a></div>
+            </small>
+          </div>
+      </form>                 
+
+        </div>
+      </div>
+    </div>
+  </body>
+{% endblock content %}
